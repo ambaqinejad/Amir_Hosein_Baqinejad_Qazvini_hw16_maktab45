@@ -19,7 +19,8 @@ mongoose.connect(
     DB_URI, {
         useNewUrlParser: true,
         useCreateIndex: true,
-        useUnifiedTopology: true
+        useUnifiedTopology: true,
+        useFindAndModify: false
     }, err => {
         if (err) return console.log('Can not connect to db.');
         return console.log('Server connected to db successfully');

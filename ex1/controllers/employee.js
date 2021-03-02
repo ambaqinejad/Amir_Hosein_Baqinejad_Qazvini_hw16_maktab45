@@ -33,7 +33,7 @@ const create = (req, res, next) => {
         nationalId: req.body.nationalId,
         gender: req.body.gender,
         isManager: req.body.isManager,
-        birthDate: new Date(req.body.birthDate)
+        birthDate: req.body.birthDate
     })
 
     newEmployee.save((err, employee) => {
