@@ -11,6 +11,7 @@ router.get('/:id', officeController.getOne);
 router.post('/create', officeController.create);
 router.put('/update', officeController.update);
 router.delete('/delete', officeController.remove);
-router.post('/getSpecific', officeController.getSpecific)
+router.post('/getSpecific', officeController.getSpecific);
+router.post('/updateAll', officeController.updateCitiesToSpecificCity);
 
 module.exports = router;

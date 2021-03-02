@@ -96,11 +96,24 @@ const getSpecific = (req, res, next) => {
         });
 }
 
+const updateCitiesToSpecificCity = (req, res, next) => {
+    Office.updateMany({}, { city: req.body.city, province: req.body.province }, (err, info) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Server Error',
+                error: err.message
+            })
+        }
+        return res.status(200).json(info);
+    });
+}
+
 module.exports = {
     getAll,
     getOne,
     create,
     update,
     remove,
-    getSpecific
+    getSpecific,
+    updateCitiesToSpecificCity
 }
