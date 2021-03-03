@@ -74,10 +74,37 @@ const remove = (req, res, next) => {
         });
 }
 
+const getSpecific = (req, res, next) => {
+    let nowJalaaliDate = jalaali.toJalaali(new Date());
+    nowJalaaliDate = Object.values(nowJalaaliDate).join('-');
+    let date1 = new Date(nowJalaaliDate);
+    let date2 = new Date(nowJalaaliDate);
+    nowJalaaliDate = new Date(nowJalaaliDate);
+    let greaterThan = +req.body.greaterThan;
+    let lessThan = +req.body.lessThan;
+    date1.setFullYear(date1.getFullYear() - lessThan);
+    date2.setFullYear(date2.getFullYear() - greaterThan);
+    console.log(date1);
+    console.log(date2);
+
+    // Office.find({ birthDate: { $gte: specificJalaaliDate.toISOString(), $lte: nowJalaaliDate.toISOString() } })
+    //     .select({ name: 1, _id: 0 })
+    //     .exec((err, offices) => {
+    //         if (err) {
+    //             return res.status(500).json({
+    //                 message: 'Server Error',
+    //                 error: err.message
+    //             })
+    //         }
+    //         return res.status(200).json(offices);
+    //     });
+}
+
 module.exports = {
     getAll,
     getOne,
     create,
     update,
-    remove
+    remove,
+    getSpecific
 }

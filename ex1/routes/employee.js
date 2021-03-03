@@ -11,5 +11,6 @@ router.get('/:id', employeeController.getOne);
 router.post('/create', employeeController.create);
 router.put('/update', employeeController.update);
 router.delete('/delete', employeeController.remove);
+router.post('/getSpecific', employeeController.getSpecific);
 
 module.exports = router;

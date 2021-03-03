@@ -16,6 +16,21 @@ const getAll = (req, res, next) => {
     });
 }
 
+const getAllView = (req, res, next) => {
+    Office.find({}, (err, offices) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Server Error',
+                error: err.message
+            })
+        }
+        return res.status(200).render('pages/office.ejs', {
+            title: 'Offices',
+            offices
+        })
+    });
+}
+
 const getOne = (req, res, next) => {
     Office.findById({ _id: req.params.id }, (err, employee) => {
         if (err) {
@@ -115,5 +130,6 @@ module.exports = {
     update,
     remove,
     getSpecific,
-    updateCitiesToSpecificCity
+    updateCitiesToSpecificCity,
+    getAllView
 }

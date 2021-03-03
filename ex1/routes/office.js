@@ -6,6 +6,7 @@ const router = express.Router();
 
 const officeController = require(path.join(path.dirname(__dirname), 'controllers', 'office.js'));
 
+router.get('/', officeController.getAllView)
 router.get('/all', officeController.getAll);
 router.get('/:id', officeController.getOne);
 router.post('/create', officeController.create);
