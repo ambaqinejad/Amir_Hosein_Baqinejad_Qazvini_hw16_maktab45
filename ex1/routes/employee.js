@@ -7,10 +7,11 @@ const employeeController = require(path.join(path.dirname(__dirname), 'controlle
 const router = express.Router();
 
 router.get('/all', employeeController.getAll);
+router.get('/getManagers', employeeController.getManagers);
 router.get('/:id', employeeController.getOne);
 router.post('/create', employeeController.create);
+router.post('/getSpecific', employeeController.getSpecific);
 router.put('/update', employeeController.update);
 router.delete('/delete', employeeController.remove);
-router.post('/getSpecific', employeeController.getSpecific);
 
 module.exports = router;

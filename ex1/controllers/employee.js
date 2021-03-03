@@ -1,4 +1,5 @@
 const path = require('path');
+const jalaali = require('jalaali-js');
 
 const Employee = require(path.join(path.dirname(__dirname), 'models', 'employee.js'));
 
@@ -84,20 +85,30 @@ const getSpecific = (req, res, next) => {
     let lessThan = +req.body.lessThan;
     date1.setFullYear(date1.getFullYear() - lessThan);
     date2.setFullYear(date2.getFullYear() - greaterThan);
-    console.log(date1);
-    console.log(date2);
+    Employee.find({ birthDate: { $gte: date1.toISOString(), $lte: date2.toISOString() } })
+        .select({ _id: 0 })
+        .exec((err, employees) => {
+            if (err) {
+                return res.status(500).json({
+                    message: 'Server Error',
+                    error: err.message
+                })
+            }
+            return res.status(200).json(employees);
+        });
+}
 
-    // Office.find({ birthDate: { $gte: specificJalaaliDate.toISOString(), $lte: nowJalaaliDate.toISOString() } })
-    //     .select({ name: 1, _id: 0 })
-    //     .exec((err, offices) => {
-    //         if (err) {
-    //             return res.status(500).json({
-    //                 message: 'Server Error',
-    //                 error: err.message
-    //             })
-    //         }
-    //         return res.status(200).json(offices);
-    //     });
+const getManagers = (req, res, next) => {
+    console.log('Hello');
+    Employee.find({ isManager: true }, (err, offices) => {
+        if (err) {
+            return res.status(500).json({
+                message: 'Server Error',
+                error: err.message
+            })
+        }
+        return res.status(200).json(offices);
+    })
 }
 
 module.exports = {
@@ -106,5 +117,6 @@ module.exports = {
     create,
     update,
     remove,
-    getSpecific
+    getSpecific,
+    getManagers
 }
