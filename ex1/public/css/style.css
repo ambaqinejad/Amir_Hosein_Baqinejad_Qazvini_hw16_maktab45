@@ -27,3 +27,8 @@ tbody tr:hover {
     color: white;
     cursor: pointer;
 }
+
+.modal-col {
+    text-align: center;
+    font-size: large;
+}
