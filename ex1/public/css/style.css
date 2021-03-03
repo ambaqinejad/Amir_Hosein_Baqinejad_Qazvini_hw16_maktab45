@@ -13,22 +13,35 @@ td,
 th {
     border: 1px solid #000;
     text-align: left;
-    padding: 8px;
+    padding: 8px 12px;
     text-align: center;
 }
 
 tr:nth-child(even) {
-    background-color: #7a7a7a;
+    background-color: #4b4a4a;
     color: white;
 }
 
 tbody tr:hover {
-    background-color: #3b3b3b;
+    background-color: #242323;
     color: white;
     cursor: pointer;
 }
 
-.modal-col {
+input {
+    border: 2px solid lightgray;
+    border-radius: 10px;
+}
+
+.display-none {
+    display: none;
+}
+
+.display-block {
+    display: block;
+}
+
+.error {
     text-align: center;
-    font-size: large;
+    color: red;
 }
